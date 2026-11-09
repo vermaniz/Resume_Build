@@ -106,8 +106,7 @@ body {
 }
 
 .cv-bullets li {
-  position: relative;
-  padding-left: 1em;
+  padding-left: 10pt;
   padding-top: 0.10cm;
   line-height: 1.35;
   break-inside: avoid;
@@ -115,15 +114,18 @@ body {
 
 .cv-bullets li:first-child { padding-top: 0; }
 
-.cv-bullets li::before {
+/* Bullets are inline (not absolutely positioned) so the PDF text order stays
+   linear: heading, then its bullets, in reading order. This is what ATS parsers read. */
+.cv-bullets li::before,
+.col-item::before {
   content: "•";
-  position: absolute;
-  left: 0;
+  display: inline-block;
+  width: 10pt;
+  margin-left: -10pt;
   font-size: 8pt;
-  top: calc(0.10cm + 0.14em);   /* li has 0.10cm top padding, so offset the bullet by it */
+  line-height: 0;
+  vertical-align: 1pt;
 }
-
-.cv-bullets li:first-child::before { top: 0.14em; }
 
 /* ── 3-column grid (skills / software / languages) ── */
 .cv-3col {
@@ -135,18 +137,9 @@ body {
 }
 
 .col-item {
-  position: relative;
-  padding-left: 1em;
+  padding-left: 10pt;
   line-height: 1.35;
   min-width: 0;
-}
-
-.col-item::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  font-size: 8pt;
-  top: 0.14em;
 }
 
 /* ── Download bar ── */
@@ -238,7 +231,7 @@ body {
   <!-- Summary -->
   <div class="cv-section">
     <h2>Process Associate | Data Analysis and Compliance Support</h2>
-    <p class="cv-summary">Detail-oriented professional with 2+ years of experience in document analysis, data extraction, and validation. Skilled in troubleshooting, process documentation, and compliance support. Proficient in MS Office and familiar with third-party applications, with strong analytical, problem-solving, and collaboration skills.</p>
+    <p class="cv-summary">Detail-oriented professional with 4+ years of experience in document analysis, data extraction, and validation. Skilled in troubleshooting, process documentation, and compliance support. Proficient in MS Office and familiar with third-party applications, with strong analytical, problem-solving, and collaboration skills.</p>
   </div>
 
   <!-- Experience -->
