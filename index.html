@@ -120,8 +120,10 @@ body {
   position: absolute;
   left: 0;
   font-size: 8pt;
-  top: 0.14em;
+  top: calc(0.10cm + 0.14em);   /* li has 0.10cm top padding, so offset the bullet by it */
 }
+
+.cv-bullets li:first-child::before { top: 0.14em; }
 
 /* ── 3-column grid (skills / software / languages) ── */
 .cv-3col {
